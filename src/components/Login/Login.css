@@ -1,0 +1,23 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.auth__button_login {
+  margin-top: 159.5px;
+}
+
+@media screen and (max-width: 1024px) {
+  .login {
+    justify-content: center;
+  }
+}  
+  
+@media screen and (max-width: 767px) {
+  .auth__button_login {
+    margin-top: 33vh;
+  }
+}
+  

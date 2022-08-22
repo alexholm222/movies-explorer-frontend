@@ -1,0 +1,152 @@
+.project {
+  display: flex;
+  flex-direction: column;
+  margin: 0 70px 0;
+}
+
+.project__container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 70px 0 110px;
+}
+
+.project__content {
+  margin-right: 40px;
+}
+
+.project__title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  padding: 0;
+  margin: 0 0 26px;
+}
+
+.project__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.project__timetable {
+  display: flex;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.project__backend {
+  width: 25%;
+  height: 36px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+}
+
+.project__fronted {
+  width: 75%;
+  height: 36px;
+  background-color: #F2F2F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project__subscription {
+  display: flex;
+  padding: 0;
+  margin: 14px 0 110px;
+  align-items: center;
+}
+
+.project__text_backend {
+  font-weight: 500;
+  line-height: 17px;
+  width: 25%;
+  text-align: center;
+  color: #A0A0A0;
+}
+
+.project__text_fronted {
+  font-weight: 500;
+  line-height: 17px;
+  width: 75%;
+  text-align: center;
+  color: #A0A0A0;
+}
+
+@media screen and (max-width: 1024px) {
+  .project {
+    margin: 0 50px 0;
+  }
+
+  .project__container {
+    padding: 70px 0 93px;
+    flex-direction: column;
+  }
+
+  .project__content {
+    margin-right: 30px;
+  }
+
+  .project__title {
+    margin-bottom: 22px;
+  }
+
+  .project__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .project__subscription {
+    margin-bottom: 90px;
+  }
+}  
+
+@media screen and (max-width: 767px) {
+  .project {
+    margin: 0 18px 0;
+  }
+  .project__container {
+    padding: 60px 0 70px;
+  }
+  .project__content {
+    margin: 0 0 56px;
+  }
+  .project__content:last-child {
+    margin: 0;
+  }
+  .project__title {
+    font-size: 18px;
+    line-height: 22px;
+    margin: 0 0 16px;
+  }
+  .project__text {
+    font-size: 11px;
+    line-height: 16px;
+  }
+  .project__timetable {
+    font-size: 11px;
+    line-height: 13px;  
+  }
+  .project__text_backend {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+  }
+  
+  .project__text_fronted {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+  }
+  .project__subscription {
+    margin: 10px 0 70px;
+  }
+  
+}
