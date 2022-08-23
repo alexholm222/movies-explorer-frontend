@@ -35,8 +35,8 @@
 .logo {
   background-image: url(../../images/logo.svg);
   width: 38px;
-  height: 38px;
-  background-size: contain;
+  min-height: 38px;
+  /* background-size: contain; */
   background-repeat: no-repeat;
   padding: 0;
 }
@@ -54,6 +54,7 @@
   text-decoration: none;
   cursor: pointer;
   margin: 0;
+  color:black;
 }
 
 .header__link_active {
@@ -82,6 +83,7 @@
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  color: black;
 }
 
 .header__button:active {
@@ -147,7 +149,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .header {
     padding: 0 30px;
   }

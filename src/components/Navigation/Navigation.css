@@ -8,7 +8,7 @@
 }
 
 .navigation__conteiner {
-  min-height: 100vh;
+  min-height: 100%;
   width: 520px;
   position: fixed;
   top: 0;
@@ -65,7 +65,7 @@
   text-decoration: none;
   box-sizing: border-box;
   transition: box-shadow 0.1s;
-  
+  color:#000000;
 }
 
 .navigation__link:active {
@@ -96,6 +96,7 @@
   background: #F9F9F9;
   border-radius: 20px; 
   transition: background-color 0.3s;
+  color:#000000;
 }
 
 .navigator__button_account:hover {

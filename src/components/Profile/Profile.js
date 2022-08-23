@@ -22,7 +22,7 @@ function Profile() {
   return(
     <section className="profile">
       <h2 className="profile__title">{`Привет, ${name}`}</h2> 
-      <form className="profile__form" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="profile__form" id="profile-form">
         <div className="profile__name">
            <p className="profile__text">Имя</p>
            <input className="profile__input profile__text" disabled={`${isEditProfileOpen ? "": "disabled"}`} type="text" required></input>
@@ -32,10 +32,10 @@ function Profile() {
            <p className="profile__text">E-mail</p>
            <input className="profile__input profile__text" disabled={`${isEditProfileOpen ? "": "disabled"}`} type="text" required></input>
         </div>
-        <button className="profile__button button-effect" style={{display:`${isEditProfileOpen ? "":"none"}`}}>Сохранить</button>
       </form>
       <div className="profile__buttons">
-        <button  className="profile__button button-effect" style={{display:`${isEditProfileOpen ? "none":""}`}} onClick={handleEditProfileClick}>Редактировать</button>
+      <button type="submit" form="profile-form" className="profile__button button-effect" style={{display:`${isEditProfileOpen ? "":"none"}`}}>Сохранить</button>
+        <button type="button" className="profile__button button-effect" style={{display:`${isEditProfileOpen ? "none":""}`}} onClick={handleEditProfileClick}>Редактировать</button>
         <Link to={'#'} className="profile__link button-effect">Выйти из аккаунта</Link>
       </div>     
     </section>

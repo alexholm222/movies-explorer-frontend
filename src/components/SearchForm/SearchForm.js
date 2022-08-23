@@ -16,12 +16,12 @@ function SearchForm() {
   return (
     <section className="search" style={{display: search}}>
       <div className="search__block">
-        <form noValidate className="search__form">
+        <form className="search__form">
           <div className="search__container">
             <div className="search__img"></div>
-            <input className="search__input" type="text" placeholder="Фильм"></input>
+            <input required className="search__input" type="text" placeholder="Фильм"></input>
           </div> 
-          <button className="search__button"></button>
+          <button type="submit" className="search__button"></button>
         </form>
         <FilterCheckbox/>
       </div>

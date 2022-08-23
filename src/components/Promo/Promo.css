@@ -42,6 +42,7 @@
 
 .promo__button {
   background-color: #F3C1F8;
+  color:black;
   width: 129px;
   height: 36px;
   box-sizing: border-box;
@@ -72,7 +73,7 @@
   transform: rotate(60deg);
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .promo {
     flex-direction: column-reverse;
     align-items: center;
@@ -80,6 +81,7 @@
   }
 
   .promo__container {
+    min-height: 100%;
     align-items: center;
     justify-content: center;
     margin: 48px 0 66px;
@@ -114,7 +116,7 @@
   }
   .promo__container {
     margin: 44px 0 0;
-    min-height: calc(100vh - 74px - 70px);
+    min-height: 100%;
   }
   .promo_block {
     margin: 0 14px 0;

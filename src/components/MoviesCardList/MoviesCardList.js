@@ -14,7 +14,7 @@ function MoviesCardList() {
         <MoviesCard/>
         <MoviesCard/>
       </ul>
-      <button className="movies__button button-effect">Ещё</button>
+      <button type="button" className="movies__button button-effect">Ещё</button>
     </section>
   )
 };

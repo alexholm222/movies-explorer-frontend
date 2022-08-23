@@ -50,6 +50,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
+  color: black;
 }
 
 .student__link:active {
@@ -57,7 +58,7 @@
 }
 
 .student__link:visited {
-  color:black;
+  color: black;
 }
 
 .student__avatar {
@@ -68,7 +69,7 @@
   padding: 0;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1023px) {
   .student {
     margin: 0 50px 0;
   }

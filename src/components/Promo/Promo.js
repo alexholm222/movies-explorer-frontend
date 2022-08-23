@@ -12,7 +12,7 @@ function Promo({handleScroll}) {
           <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
           <p className="promo__text">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
         </div>  
-        <button onClick={handleScroll} className="promo__button">Узнать больше</button>
+        <button onClick={handleScroll} type="button" className="promo__button">Узнать больше</button>
       </div>
       <div className="promo__img"></div>
     </section>

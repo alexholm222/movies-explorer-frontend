@@ -36,7 +36,7 @@ function Header({handleOpenNav}) {
           <Link to={'saved-movies'} className={`header__link header__link_${activSave} header__link_saved button-effect`}>Сохраненные фильмы</Link>
         </div>
         <Link to={'profile'} className="header__button header__button_type_account">Аккаунт</Link>
-        <button onClick={handleOpenNav} className="header__button header__button_type_navigator"></button>
+        <button onClick={handleOpenNav} type="button" className="header__button header__button_type_navigator"></button>
       </header>
       <header className={`header header_type_landing header__${headerLanding}`}>
         <Link to={'/'} className="header__link">
