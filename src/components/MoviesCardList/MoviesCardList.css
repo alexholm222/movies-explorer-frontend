@@ -33,6 +33,7 @@
   box-sizing: border-box;
   transition: opacity 0,3s;
   margin-top: 50px;
+  color: black;
 }
 
 .movies__button:hover {

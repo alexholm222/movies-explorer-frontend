@@ -134,9 +134,6 @@
 }  
 
 @media screen and (max-width: 767px) {
-  .profile {
-    min-height: calc(100vh - 74px);;
-  }
   .profile__title {
     margin: 70px 0 80px;
   }
@@ -144,7 +141,7 @@
     width: 260px;
   }
   .profile__email {
-    margin-bottom: 53vh;
+    margin-bottom: 51vh;
   }
   .profile__link:last-child {
     margin: 0 0 40px;

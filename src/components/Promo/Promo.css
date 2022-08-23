@@ -83,12 +83,12 @@
   .promo__container {
     min-height: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     margin: 48px 0 66px;
   }
 
   .promo__button {
-    margin: 0 0 20px;
+    margin: 0 0 10px;
   }
  
   .promo__img {
