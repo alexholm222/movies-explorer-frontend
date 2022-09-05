@@ -97,10 +97,16 @@
 .header__button_type_account {
   width: 100px;
   height: 32px;
-  background: #F9F9F9;
   border-radius: 20px; 
   font-size: 14px;
   transition: background-color 0.3s;
+}
+
+.header__button_overflow {
+   background: #F9F9F9;
+   width: 100px;
+   height: 32px;
+   border-radius: 20px; 
 }
 
 .header__button_type_account:hover {
@@ -148,6 +154,22 @@
   transform: rotate(180deg) scale(1.15);
   cursor: pointer;
 }
+
+.header__button_type_landing {
+  width: 100px;
+  height: 32px;
+  box-sizing: border-box;
+  border: 1px solid #00000060;
+  border-radius: 20px; 
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.header__button_type_landing:hover {
+  background: #d0a6d3;
+  cursor: pointer;
+}
+
 
 @media screen and (max-width: 1023px) {
   .header {

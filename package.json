@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && scp -r ./build/* alexholm222@51.250.65.65:/home/alexholm222/movies-explorer-fronted" 
+    "deploy": "npm run build && scp -r ./build/* alexholm222@51.250.65.65:/home/alexholm222/movies-explorer-fronted"
   },
   "eslintConfig": {
     "extends": [
@@ -37,5 +37,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

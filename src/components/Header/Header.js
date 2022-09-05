@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import { useLocation, Link } from "react-router-dom";
 
-function Header({handleOpenNav}) {
-
+function Header({handleOpenNav, loggedIn}) {
+  let isbackGround = false;
   let headerLanding = "";
   let headerMain = "";
   let activeMovies = "";
@@ -22,12 +22,18 @@ function Header({handleOpenNav}) {
     headerLanding = "";
     activSave ="active";
   } else if (location.pathname ==="/") {
-    headerMain = "";
-    headerLanding = "active";
+    if(loggedIn) {
+      headerMain = "active";
+      headerLanding = "";
+      isbackGround = true;
+    } else {
+      headerMain = "";
+      headerLanding = "active";
+    }
   } 
   return (
     <>
-      <header className={`header header_type_movies header__${headerMain}`}>
+      <header className={`header header_type_movies header__${headerMain}`} style={{backgroundColor: `${isbackGround ? "#F3C1F8": "#ffff"}`}}>
         <div className="header__container">
           <Link to={'/'} className="header__link">
             <div className="logo header__logo"></div>
@@ -35,7 +41,9 @@ function Header({handleOpenNav}) {
           <Link to={'movies'} className={`header__link header__link_${activeMovies} header__link_movies button-effect`}>Фильмы</Link>
           <Link to={'saved-movies'} className={`header__link header__link_${activSave} header__link_saved button-effect`}>Сохраненные фильмы</Link>
         </div>
-        <Link to={'profile'} className="header__button header__button_type_account">Аккаунт</Link>
+        <div className={`${isbackGround ? "" : "header__button_overflow"}`}>
+          <Link to={'profile'} className={`header__button ${isbackGround ? "header__button_type_landing": "header__button_type_account"} `}>Аккаунт</Link>
+        </div>
         <button onClick={handleOpenNav} type="button" className="header__button header__button_type_navigator"></button>
       </header>
       <header className={`header header_type_landing header__${headerLanding}`}>
