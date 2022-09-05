@@ -1,0 +1,123 @@
+.search {
+  padding: 70px 70px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.search__block {
+  display: flex;
+  margin: 0 0 69px;
+  border-radius: 9px;
+  justify-content: space-between;
+}
+
+.search__form {
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80.5%;
+  border-radius: 9px 0 0 9px;
+  background-color: #F9F9F9;
+}
+
+.search__container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.search__img {
+  background: url(../../images/search_img.svg);
+  min-width: 34px;
+  height: 34px;
+  margin: 0 10px 0 19px;
+}
+
+.search__input {
+  background-color: #F9F9F9;
+  margin: 0;
+  border: none;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100%;
+}
+
+.search__input:focus {
+  border: none;
+  outline: 0;
+  box-shadow: 0 1px 0 0  #E8E8E8;
+}
+
+.search__button {
+  background: url(../../images/search_button.svg);
+  min-width: 34px;
+  height: 34px;
+  cursor: pointer;
+  border: none;
+  margin: 0 30px 0 46px;
+  padding: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  ;
+}
+
+.search__button:hover {
+  opacity: 0.7;
+  transform: scale(1.05);
+}
+
+.search__line {
+  width: 100%;
+  border-bottom: 1px solid #E8E8E8;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 0 10px;
+}
+
+@media screen and (max-width: 1279px) {
+  .search__button {
+    margin: 0 19px 0 46px;
+  }
+}  
+
+@media screen and (max-width: 1023px) {
+  .search {
+    padding: 80px 30px 0;
+  }
+  .search__block {
+    margin-bottom: 109px;
+  }
+  .search__form {
+    width: 70.7%;
+  }
+}  
+
+@media screen and (max-width: 767px) {
+  .search {
+    padding: 80px 10px 0;
+  }
+  .search__block {
+    flex-direction: column;
+    align-items: center;
+  }
+  .search__form {
+    width: 100%;
+    border-radius: 9px;
+  }
+  .search__img {
+    display: none;
+  }
+  .search__input {
+    font-size: 14px;
+    line-height: 20px;
+    margin-left: 19px;
+  }
+  .search__block {
+    margin-bottom: 45px;
+  }
+}
+
