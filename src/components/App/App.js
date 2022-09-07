@@ -9,6 +9,7 @@ import Profile from "../Profile/Profile";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import PageNotFound from "../PageNotFound/PageNotFound";
+import ErrorPopup from "../ErorrPopup/ErrorPopup";
 import { Route, Routes } from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import { apiSavedFilm } from "../../utils/MainApi";
@@ -16,13 +17,17 @@ import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import { useNavigate, Navigate } from "react-router-dom";
 import * as Auth from "../../utils/Auth";
 import ProtectedRoute from "../../utils/ProtectedRoute";
+import {ERROR_TEXT_USER, ERROR_TEXT_SAVE_MOVIE, ERROR_TEXT_DELETE_MOVIE, 
+        ERROR_CODE_UNAUTHORIZATION} from "../../utils/Сonstants";
 
 function App() {
   const [isNavButton, setIsNavButton] = useState(false);
   const [isSavedMovies, setIsSavedMovies] = useState([]);
   const [isPreloader, setIsPreloader] = useState(false);
   const [isSearchErr, setIsSearchErr] = useState(false);
-  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser')));
+  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser')) || {});
+  const [isError, setIsError] = useState(false);
+  const [errorText, setErrorText] = useState("");
   const isLogin = JSON.parse(localStorage.getItem('isLogin')) || false;
   const token = localStorage.getItem('token');
   const nav = useNavigate();
@@ -32,7 +37,15 @@ function App() {
         .then((user) => {
           setCurrentUser(user);
         })
-        .catch(err => console.log(err));}
+        .catch((err) => {
+          if(err.status === ERROR_CODE_UNAUTHORIZATION) {
+            handleSingOut();
+          } else {
+            setIsError(true);
+            setErrorText(ERROR_TEXT_USER)
+            console.log(err)
+          }
+        });}
   },[token]);
 
   useEffect(() => {
@@ -45,7 +58,11 @@ function App() {
       })
       .catch(err => {
         setIsSearchErr(true);
-        console.log(err);
+        if(err.status === ERROR_CODE_UNAUTHORIZATION) {
+          handleSingOut();
+        } else {
+          console.log(err)
+        }
       })
       .finally(() => {
         setIsPreloader(false)
@@ -67,7 +84,15 @@ function App() {
         .then((savedMovie) => {
           setIsSavedMovies([savedMovie.data, ...isSavedMovies])
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          if(err.status === ERROR_CODE_UNAUTHORIZATION) {
+            handleSingOut();
+          } else {
+            setIsError(true);
+            setErrorText(ERROR_TEXT_SAVE_MOVIE);
+            console.log(err)
+          }
+        })
       } else {
         const film = isSavedMovies.filter((c)=> c.movieId === movie.id)[0];
         handleDeleteMovie(film)
@@ -79,7 +104,15 @@ function App() {
     .then(() => {
       setIsSavedMovies((state) => state.filter((c)=> c._id !== movie._id ))  
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      if(err.status === ERROR_CODE_UNAUTHORIZATION) {
+        handleSingOut();
+      } else {
+        setIsError(true);
+        setErrorText(ERROR_TEXT_DELETE_MOVIE);
+        console.log(err)
+      }
+    })
   }
   //функция выхода
   function handleSingOut() {
@@ -94,9 +127,20 @@ function App() {
     nav("/");
   }
 
+  function closePopup() {
+    setIsError(false);
+  }
+
+  function closeOnOverlay(e) { 
+    if (e.target === e.currentTarget) { 
+      closePopup(); 
+    } 
+  } 
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
     <div className="page">
+      <ErrorPopup isError={isError} errorText={errorText} closePopup={closePopup} closeOnOverlay={closeOnOverlay}/>
       <Navigation handleCloseNav={handleCloseNav} isNavButton={isNavButton}/>
       <Header handleOpenNav={handleOpenNav}  loggedIn={isLogin}/>
       <main className="main">
@@ -109,7 +153,7 @@ function App() {
             component={SavedMovies} SavedMovies={isSavedMovies} setSavedMovies={setIsSavedMovies} isPreloader={isPreloader} isSearchErr={isSearchErr} onMovieDelete={handleDeleteMovie}/>}
           />  
           <Route path="/profile" element={<ProtectedRoute loggedIn={isLogin}
-            component={Profile} singOut={handleSingOut} setCurrentUser={setCurrentUser} token={token}/>}
+            component={Profile} singOut={handleSingOut} setCurrentUser={setCurrentUser}/>}
           />
           <Route path="/signup" element={ !isLogin ? <Register/> : <Navigate to="/movies" replace/>}/>
           <Route path="/signin" element={ !isLogin ? <Login/> : <Navigate to="/movies" replace/>}/>

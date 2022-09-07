@@ -3,12 +3,15 @@ import './Login.css';
 import { Link, useNavigate } from "react-router-dom";
 import * as Auth from "../../utils/Auth"
 import Validator from "../../utils/Validator";
+import {ERROR_CODE_UNAUTHORIZATION, ERROR_CODE_BAD_REQUEST, 
+        ERROR_MESSAGE_AUTH_BAD, ERROR_MESSAGE_AUTH_INTERNET} from "../../utils/Сonstants";
 
 function Login() {
   const validator = Validator();
   const [error, setError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [errorStyle, setErrorStyle] = useState(false);
+  const [inputDisable, setInputDisable] = useState(false);
   const disable = validator.isValid;
   const nav = useNavigate()
 
@@ -18,7 +21,8 @@ function Login() {
   },[validator.values]);
 
   function handleSubmitLogin(e) {
-    e.preventDefault()
+    e.preventDefault();
+    setInputDisable(true);
       Auth.authorize(validator.values.email, validator.values.password)
         .then((data) => {
           if(data.token) {
@@ -33,13 +37,16 @@ function Login() {
       })
       .catch((err) => {
         setError(true);
-        if (err.status === 400 || err.status === 401) {
+        if (err.status === ERROR_CODE_BAD_REQUEST || err.status === ERROR_CODE_UNAUTHORIZATION) {
           setErrorStyle(true);
-          setErrorMessage('Неправильный пароль или email, проверьте введенные данные и попробуйте еще раз');
+          setErrorMessage(ERROR_MESSAGE_AUTH_BAD);
         } else {
           setErrorStyle(false);
-          setErrorMessage('Проблемы с интернет соединением');
+          setErrorMessage(ERROR_MESSAGE_AUTH_INTERNET);
         }
+      })
+      .finally(() => {
+        setInputDisable(false);
       })
   }
   return (
@@ -54,12 +61,12 @@ function Login() {
         <div className="auth__blocks">
           <p className="auth__text">E-mail</p>
           <div className="auth__block">
-            <input pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" value={validator.values.email || ''} onChange={validator.handleChange} type="email" id="input-email" name="email" required className={`auth__input ${errorStyle ? "error" : ""}`}></input>
+            <input disabled={inputDisable ? "disabled" : ""} pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" value={validator.values.email || ''} onChange={validator.handleChange} type="email" id="input-email" name="email" required className={`auth__input ${errorStyle ? "error" : ""}`}></input>
           </div> 
           <span className="auth__error">{validator.errors.email}</span> 
           <p className="auth__text" >Пароль</p>
           <div className="auth__block">
-            <input value={validator.values.password || ''} onChange={validator.handleChange} className={`auth__input ${errorStyle ? "error" : ""}`} type="password" id="input-password" name="password" required ></input>
+            <input disabled={inputDisable ? "disabled" : ""} value={validator.values.password || ''} onChange={validator.handleChange} className={`auth__input ${errorStyle ? "error" : ""}`} type="password" id="input-password" name="password" required ></input>
           </div>
           <span className="auth__error">{error ? errorMessage : validator.errors.password}</span>  
         </div>  

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import { useLocation } from "react-router-dom";
+import {NUMBER_OF_MOVIES_WIDTH, NUMBER_OF_MOVIES_MIDDLE, 
+        NUMBER_OF_MOVIES_NARROW, MOVIES_LOAD_WIDTH, 
+        MOVIES_LOAD_NARROW} from "../../utils/Сonstants"
 
 function MoviesCardList({searchResult, searchErr, notFound, setNoFound, onMovieSave, onMovieDelete, savedFilms, query}) {
   const [isMovies, setIsMovies] = useState(0);
@@ -44,22 +47,22 @@ function MoviesCardList({searchResult, searchErr, notFound, setNoFound, onMovieS
   function handleWidthWindow() {
     const width = window.innerWidth;
     if(width > 1133) {
-      setIsMovies(12);
-      setIsLoadMovies(3)
+      setIsMovies(NUMBER_OF_MOVIES_WIDTH);
+      setIsLoadMovies(MOVIES_LOAD_WIDTH)
     } else if(width > 636) {
-      setIsMovies(8);
-      setIsLoadMovies(2)
+      setIsMovies(NUMBER_OF_MOVIES_MIDDLE);
+      setIsLoadMovies(MOVIES_LOAD_NARROW)
     }
     else {
-      setIsMovies(5);
-      setIsLoadMovies(2);
+      setIsMovies(NUMBER_OF_MOVIES_NARROW);
+      setIsLoadMovies(MOVIES_LOAD_NARROW);
     }
   }
   return (
     <section className="movies__gallery">
       <ul className={`movies__list`}>
       {searchResult.map((movie, index) => {
-        if(location.pathname === "/movies"){
+        if(location.pathname === "/movies") {
           if(index < isMovies) {
             return (<MoviesCard key={movie.id} movie={movie} onMovieSave={onMovieSave} onMovieDelete={onMovieDelete} savedFilms={savedFilms}/>);
           }

@@ -8,14 +8,14 @@ import Search from "../../utils/Search";
 import Filter from "../../utils/Filter";
 
 function Movies({onMovieSave, savedFilms}) {
-  const [isSearchResultMovies, setIsSearchResultMovies] = useState(JSON.parse(localStorage.getItem("movies")));
-  const [isFilterMovies, setIsFilterMovies] = useState(JSON.parse(localStorage.getItem("moviesFilter")));
+  const [isSearchResultMovies, setIsSearchResultMovies] = useState(JSON.parse(localStorage.getItem("movies")) || []);
+  const [isFilterMovies, setIsFilterMovies] = useState(JSON.parse(localStorage.getItem("moviesFilter")) || []);
   const [isPreloader, setIsPreloader] = useState(false);
   const [isSearchErr, setIsSearchErr] = useState(false);
-  const [isCheckBox, setIsCheckBox] =useState(JSON.parse(localStorage.getItem("checkBox")));
+  const [isCheckBox, setIsCheckBox] =useState(JSON.parse(localStorage.getItem("checkBox")) || false);
   const [isNotFound, setIsNotFound] = useState(false);
   const [isMovieList, setIsMovieList] = useState([]);
-  const [query, setQuery] = React.useState(JSON.parse(localStorage.getItem("queryMovies")));
+  const [query, setQuery] = useState(JSON.parse(localStorage.getItem("queryMovies")) || "");
   //запись значений в локальное хранилище
   useEffect(() => {
     localStorage.setItem("movies", JSON.stringify(isSearchResultMovies));

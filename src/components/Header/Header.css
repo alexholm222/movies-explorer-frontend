@@ -184,8 +184,14 @@
   .header__button_type_account {
     display: none;
   }
+  .header__button_type_landing {
+    display: none;
+  }
   .header__button_type_navigator {
     display: inline-block;
+  }
+  .header__button_overflow {
+    display: none;
   }
 }
 

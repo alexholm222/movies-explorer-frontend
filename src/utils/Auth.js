@@ -56,7 +56,13 @@ export const authorize = (email, password) => {
         'Authorization': `Bearer ${token}`,
       }
     })
-    .then(res => res.json())
+    .then(response => {
+      if(response.ok) {
+        return response.json()
+    } else {
+        return Promise.reject(response)
+    }
+    })
     .then(data => data)
     .catch(err => console.log(err))
   } 

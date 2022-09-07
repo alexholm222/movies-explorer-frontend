@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./Header.css";
 import { useLocation, Link } from "react-router-dom";
 
