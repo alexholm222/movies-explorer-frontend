@@ -1,0 +1,15 @@
+export const NUMBER_OF_MOVIES_WIDTH = 12;
+export const NUMBER_OF_MOVIES_MIDDLE = 8;
+export const NUMBER_OF_MOVIES_NARROW = 5;
+export const MOVIES_LOAD_WIDTH = 3;
+export const MOVIES_LOAD_NARROW = 2;
+export const ERROR_TEXT_USER = "Произошла ошибка при загрузке данных пользователя";
+export const ERROR_TEXT_SAVE_MOVIE = "Не удалось сохранить фильм из-за проблем на сервере";
+export const ERROR_TEXT_DELETE_MOVIE = "Не удалось удалить фильм из-за проблем на сервере";
+export const ERROR_MESSAGE_AUTH_BAD = "Неправильный пароль или email, проверьте введенные данные и попробуйте еще раз";
+export const ERROR_MESSAGE_AUTH_INTERNET = "Проблемы с интернет соединением";
+export const ERROR_MESSAGE_CONFLICT = "Данный email уже занят";
+export const ERROR_CODE_UNAUTHORIZATION = 401;
+export const ERROR_CODE_BAD_REQUEST = 400;
+export const ERROR_CODE_CONFLICT = 409;
+export const DURATION_SHORT_FILM = 40;

@@ -1,8 +1,59 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import './Register.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import * as Auth from "../../utils/Auth"
+import Validator from "../../utils/Validator";
+import {ERROR_MESSAGE_AUTH_INTERNET, ERROR_CODE_CONFLICT, 
+        ERROR_MESSAGE_CONFLICT} from "../../utils/Сonstants";
 
 function Register() {
+  const validator = Validator();
+  const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [errorStyle, setErrorStyle] = useState(false);
+  const [inputDisable, setInputDisable] = useState(false);
+  const disable = validator.isValid;
+  const nav = useNavigate();
+
+  useEffect(() => {
+    setError(false);
+    setErrorStyle(false);
+  },[validator.values.email])
+
+  function handleSubmitRegister(e) {
+    e.preventDefault()
+    setInputDisable(true);
+    Auth.register(validator.values)
+    .then(() => {
+     return Auth.authorize(validator.values.email, validator.values.password)
+    })
+    .then((data)=> {
+      if(data.token) {
+        nav('/movies');
+        localStorage.setItem('isLogin', true);
+        Auth.getContent(data.token)
+        .then((user) => {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        })
+        .catch(err => console.log(err))
+      }
+        
+    })
+      .catch((err) => {
+        setError(true);
+        if (err.status === ERROR_CODE_CONFLICT) {
+          setErrorStyle(true);
+          setErrorMessage(ERROR_MESSAGE_CONFLICT);
+        } else {
+          setErrorStyle(false);
+          setErrorMessage(ERROR_MESSAGE_AUTH_INTERNET);
+        }
+      })
+      .finally(() => {
+        setInputDisable(false);
+      });
+  }
+
   return (
     <section className="register">
       <div className="auth__container">
@@ -11,23 +62,25 @@ function Register() {
         </Link>
         <h2 className="auth__title">Добро пожаловать!</h2> 
       </div>  
-      <form className="auth__form" name="authRegister">
+      <form noValidate onSubmit={handleSubmitRegister} className="auth__form" name="authRegister">
         <div className="auth__blocks">
           <p className="auth__text">Имя</p>
           <div className="auth__block">
-            <input className="auth__input" type="text" id="input-name" name="inputName" required></input>
+            <input disabled={inputDisable ? "disabled" : ""} pattern="^[a-zA-Zа-яА-Я\s-]+$" value={validator.values.name || ''} onChange={validator.handleChange} className="auth__input" type="text" id="input-name" name="name" required></input>
           </div> 
+          <span className="auth__error">{validator.errors.name}</span>
           <p className="auth__text">E-mail</p>
           <div className="auth__block">
-            <input type="email" id="input-email" name="inputEmail" required className="auth__input"></input>
-          </div>   
+            <input disabled={inputDisable ? "disabled" : ""} pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" value={validator.values.email || ''} onChange={validator.handleChange} type="email" id="input-email" name="email" required className={`auth__input ${errorStyle ? "error" : ""}`}></input>
+          </div>
+          <span className="auth__error">{validator.errors.email}</span>   
           <p className="auth__text" >Пароль</p>
           <div className="auth__block">
-            <input className="auth__input" type="password" id="input-password" minLength="7" maxLength="20" name="inputPassword" required></input>
+            <input disabled={inputDisable ? "disabled" : ""} value={validator.values.password || ''} onChange={validator.handleChange} className="auth__input" type="password" id="input-password" name="password" required></input>
           </div>   
-          <span className="auth__error">Что-то пошло не так...</span>
+          <span className="auth__error">{error ? errorMessage : validator.errors.password}</span>
         </div>
-        <button type="submit" className="auth__button auth__button_register button-effect">Зарегистрироваться</button>
+        <button disabled={!disable ? "disabled" : ""} type="submit" className="auth__button auth__button_register button-effect">Зарегистрироваться</button>
       </form>
       <p className="auth__subtitle">Уже зарегистрированы? <Link className="auth__link button-effect" to={"/signin"}>Войти</Link></p>
     </section>

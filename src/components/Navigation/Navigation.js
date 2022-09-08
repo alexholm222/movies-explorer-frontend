@@ -3,8 +3,6 @@ import "./Navigation.css";
 import { Link } from "react-router-dom";
 
 function Navigation({isNavButton, handleCloseNav}) {
-  
-
   return (
     <>
     <div className="navigation" style={{display: isNavButton ? "flex": "none"}}></div>

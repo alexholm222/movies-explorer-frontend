@@ -2,7 +2,8 @@
 
 **Описание проекта**
  * [Ссылка на сайт проекта]( https://movies.chart.nomoredomains.sbs/)
- * [Ссылка на GitHub проекта]( https://github.com/alexholm222/movies-explorer-frontend/) 
+ * [Ссылка на GitHub проекта]( https://github.com/alexholm222/movies-explorer-frontend/)
+ * [Ссылка на Pull requests]( https://github.com/alexholm222/movies-explorer-frontend/pull/2/) 
 
 Проект сервис с возможностью пойска фильмов и сохранению понравившихся в избранноею
  Проект имеет три страницы:

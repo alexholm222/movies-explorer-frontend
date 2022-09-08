@@ -3,8 +3,6 @@ import "./Promo.css";
 
 
 function Promo({handleScroll}) {
-  
-
   return (
     <section className="promo">
       <div className="promo__container">

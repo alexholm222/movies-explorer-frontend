@@ -25,7 +25,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0;
-  margin: 0 0 16px;
+  margin: 0 0 0;
 }
 
 .profile__text {
@@ -37,8 +37,7 @@
 }
 
 .profile__input {
-  font-weight: 500;
-  font-size: 12px;
+  font-weight: 400;
   background-color: white;
   border: none;
   display: flex;
@@ -48,20 +47,16 @@
 }
 
 .profile__input:focus {
+  font-weight: 500;
   border: none;
   outline: 0;
-}
-
-.profile__input:disabled {
-  font-weight: 400;
-  font-size: 11px;
 }
 
 .profile__email {
   display: flex;
   justify-content: space-between;
   padding: 0;
-  margin: 17px 0 31.4vh;
+  margin: 17px 0 0;
 }
 
 .profile__line {
@@ -76,12 +71,17 @@
   line-height: 16px;
   text-decoration: none;
   padding: 0;
-  margin: 0 0 16px;
+  margin: 31.4vh 0 16px;
   max-width: fit-content;
   align-self: center;
   background-color: white;
   border: none;
   color:black;
+  transition: color 0,3s;
+}
+
+.profile__button:disabled {
+  color : #646060;
 }
 
 .profile__buttons {
@@ -89,6 +89,10 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.profile__button_singout {
+  color: #FF4062;
 }
 
 .profile__link {
@@ -102,6 +106,9 @@
 .profile__link:last-child {
   margin: 0 0 70px;
   color: #FF4062;
+  background-color: white;
+  border: none;
+  padding: 0;
 }
 
 .profile__link:active {
@@ -120,6 +127,32 @@
   color: #FF4062;
 }
 
+.profile__error {
+  width: 90%;
+  text-align:right;
+  min-height: 12px;
+  position: relative;
+  margin: 2px 0;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  color: #FF4062;
+  align-self: flex-end;
+}
+
+.profile__error_email {
+ min-height: 24px;
+}
+
+.profile__message {
+  position: relative;
+  font-weight: 500;
+  font-size: 14px; 
+  line-height: 16px;
+  min-height: 16px;
+  color: #02c919;
+}
+
 @media screen and (max-width: 1023px) {
 .profile {
   justify-content: flex-start;
@@ -127,8 +160,8 @@
 .profile__title {
   margin: 236px 0 96px;
 }
-.profile__email {
-  margin-bottom: 210px;
+.profile__button {
+  margin-top: 210px;
 }
 
 }  
@@ -140,8 +173,8 @@
   .profile__form {
     width: 260px;
   }
-  .profile__email {
-    margin-bottom: 51vh;
+  .profile__button {
+    margin-top: 49vh;
   }
   .profile__link:last-child {
     margin: 0 0 40px;
