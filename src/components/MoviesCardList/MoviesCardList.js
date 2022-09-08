@@ -64,11 +64,13 @@ function MoviesCardList({searchResult, searchErr, notFound, setNoFound, onMovieS
       {searchResult.map((movie, index) => {
         if(location.pathname === "/movies") {
           if(index < isMovies) {
-            return (<MoviesCard key={movie.id} movie={movie} onMovieSave={onMovieSave} onMovieDelete={onMovieDelete} savedFilms={savedFilms}/>);
+            return (<MoviesCard key={movie.id} movie={movie} onMovieSave={onMovieSave} 
+                     onMovieDelete={onMovieDelete} savedFilms={savedFilms}/>);
           }
           return null
           } else {
-          return (<MoviesCard key={movie.movieId} movie={movie} onMovieSave={onMovieSave} onMovieDelete={onMovieDelete} savedFilms={savedFilms}/>);
+          return (<MoviesCard key={movie.movieId} movie={movie} onMovieSave={onMovieSave} 
+                   onMovieDelete={onMovieDelete} savedFilms={savedFilms}/>);
           }
         })
       }

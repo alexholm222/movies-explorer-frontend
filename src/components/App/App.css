@@ -1,6 +1,7 @@
 .page {
   font-family: 'Inter', sans-serif;
   font-style: normal;
+  color: black;
   min-height: 100vh;
   margin: auto;
   -moz-osx-font-smoothing: grayscale;

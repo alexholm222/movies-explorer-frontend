@@ -81,10 +81,13 @@ function Movies({onMovieSave, savedFilms}) {
   },[query])
   return (
     <>
-    <SearchForm onSearchFilm={handleSearchFilm} onFilterFilm={handleFilterFilm} isCheckBox={isCheckBox} query={query} SearchValue={handleSearchValue}/>
+    <SearchForm onSearchFilm={handleSearchFilm} onFilterFilm={handleFilterFilm} 
+    isCheckBox={isCheckBox} query={query} SearchValue={handleSearchValue}/>
     {isPreloader ? 
     <Preloader/> : 
-    <MoviesCardList searchResult={isCheckBox ? isFilterMovies : isSearchResultMovies} searchErr={isSearchErr} notFound={isNotFound} setNoFound={setIsNotFound} onMovieSave={onMovieSave} savedFilms={savedFilms} query={query}/>}
+    <MoviesCardList searchResult={isCheckBox ? isFilterMovies : isSearchResultMovies} 
+    searchErr={isSearchErr} notFound={isNotFound} setNoFound={setIsNotFound} onMovieSave={onMovieSave} 
+    savedFilms={savedFilms} query={query}/>}
     </>
   )
 };

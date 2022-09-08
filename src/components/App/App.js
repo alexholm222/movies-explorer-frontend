@@ -150,7 +150,8 @@ function App() {
             component={Movies} onMovieSave={handleMovieSave} savedFilms={isSavedMovies}/>}
           />
           <Route path="/saved-movies" element={<ProtectedRoute loggedIn={isLogin}
-            component={SavedMovies} SavedMovies={isSavedMovies} setSavedMovies={setIsSavedMovies} isPreloader={isPreloader} isSearchErr={isSearchErr} onMovieDelete={handleDeleteMovie}/>}
+            component={SavedMovies} SavedMovies={isSavedMovies} setSavedMovies={setIsSavedMovies} 
+            isPreloader={isPreloader} isSearchErr={isSearchErr} onMovieDelete={handleDeleteMovie}/>}
           />  
           <Route path="/profile" element={<ProtectedRoute loggedIn={isLogin}
             component={Profile} singOut={handleSingOut} setCurrentUser={setCurrentUser}/>}

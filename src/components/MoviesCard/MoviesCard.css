@@ -28,7 +28,7 @@
   transition: width 0.2s;
 }
 
-.card__container:hover .card__title{
+.card__container:hover .card__title {
   position: absolute;
   left: 0;
   top: 0;
@@ -96,6 +96,7 @@
   height: 29px;
   border-radius: 30px;
   background: #F9F9F9;
+  color: black;
   border: none;
   display: flex;
   align-self: center;

@@ -50,10 +50,13 @@ function SavedMovies({SavedMovies, isPreloader, isSearchErr, onMovieDelete}) {
   }
   return (
     <>
-      <SearchForm onSearchSavedFilm={handleSearchFilm} onFilterFilm={handleFilterSavedFilm} isCheckBox={isCheckBox} query={query} SearchValue={handleSearchValue}/>
+      <SearchForm onSearchSavedFilm={handleSearchFilm} onFilterFilm={handleFilterSavedFilm} 
+       isCheckBox={isCheckBox} query={query} SearchValue={handleSearchValue}/>
       {isPreloader ? 
       <Preloader/> : 
-      <MoviesCardList searchResult={isCheckBox ? isFilterSavedMovies : isSearchResultSaved} notFound={isNotFound} searchErr={isSearchErr} setNoFound={setIsNotFound} onMovieDelete={onMovieDelete} query={query}/>
+      <MoviesCardList searchResult={isCheckBox ? isFilterSavedMovies : isSearchResultSaved} 
+       notFound={isNotFound} searchErr={isSearchErr} setNoFound={setIsNotFound} 
+       onMovieDelete={onMovieDelete} query={query}/>
       }
     </>
   )
