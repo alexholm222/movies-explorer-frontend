@@ -1,7 +1,7 @@
 # Фронтед дипломного проекта Movies
 
 **Описание проекта**
- * [Ссылка на сайт проекта]( https://movies.chart.nomoredomains.sbs/)
+ * [Ссылка на сайт проекта]( https://project-movies.ru/)
  * [Ссылка на GitHub проекта]( https://github.com/alexholm222/movies-explorer-frontend/) 
 
 Проект сервис с возможностью пойска фильмов и сохранению понравившихся в избранноею
