@@ -24,6 +24,25 @@ function Movies({onMovieSave, savedFilms}) {
     localStorage.setItem("queryMovies", JSON.stringify(query));
   },[isCheckBox, isFilterMovies, isSearchResultMovies, query]);
 
+  //загрузка всех фильмов на страницу при входе в аккаунт
+  useEffect(() => {
+    setIsNotFound(false);
+    setIsPreloader(true);
+    setIsSearchErr(false);
+    apiBeatFilm.getFilmInformation()
+        .then(movies => {
+          setIsMovieList(movies);
+        })
+        .catch(err => {
+          console.log(err);
+          setIsNotFound(false);
+          setIsSearchErr(true);
+        }) 
+        .finally(() => {
+          setIsPreloader(false);
+        })
+  },[])
+
   //функция пойска фильмов на странцице Movies
   function handleSearchFilm({query}) {
     setIsNotFound(false);
@@ -33,8 +52,7 @@ function Movies({onMovieSave, savedFilms}) {
       apiBeatFilm.getFilmInformation()
         .then(movies => {
           setIsMovieList(movies);
-          setIsSearchResultMovies(Search(movies, query));
-          setIsFilterMovies(Filter(Search(movies, query)));
+          
         })
         .catch(err => {
           console.log(err);
@@ -75,10 +93,10 @@ function Movies({onMovieSave, savedFilms}) {
   useEffect(() => {
     if(query === "") {
       setIsNotFound(false);
-      setIsSearchResultMovies([]);
-      setIsFilterMovies([]);
+      setIsSearchResultMovies(isMovieList);
+      setIsFilterMovies(Filter(isMovieList));
     }
-  },[query])
+  },[isMovieList, query])
   return (
     <>
     <SearchForm onSearchFilm={handleSearchFilm} onFilterFilm={handleFilterFilm} 

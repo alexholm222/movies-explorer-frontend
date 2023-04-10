@@ -1,4 +1,4 @@
-const BASE_URL = 'https://movies.nomoredomains.sbs';
+const BASE_URL = 'https://project-movies.online';
 export const register = ({name, email, password}) => {
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',

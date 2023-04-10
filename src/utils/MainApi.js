@@ -69,7 +69,7 @@ class Api {
   }
   
   export const apiSavedFilm = new Api ({
-    baseUrl: 'https://movies.nomoredomains.sbs',
+    baseUrl: 'https://project-movies.online',
     headers: {
       'Content-Type': 'application/json',
     }
